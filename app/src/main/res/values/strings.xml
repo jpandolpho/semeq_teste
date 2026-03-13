@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SemeqTeste</string>
+    <string name="text_welcome">Welcome</string>
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    <string name="text_login">LOGIN</string>
 </resources>
