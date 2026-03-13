@@ -1,0 +1,73 @@
+package br.jpandolpho.semeq.ui.main
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import br.jpandolpho.semeq.databinding.ActivityMainBinding
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.ShapeAppearanceModel
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        setupImage()
+        setupListener()
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewModel.errorLogin.observe(this, Observer {
+            val message = it
+            Toast.makeText(this,
+                message,
+                Toast.LENGTH_LONG).show()
+        })
+
+        viewModel.accessToken.observe(this, Observer {
+            val mIntent = Intent(this, TreeViewActivity::class.java)
+            val bundle = Bundle()
+            bundle.putSerializable("credentials",it)
+            mIntent.putExtras(bundle)
+            startActivity(mIntent)
+        })
+    }
+
+    private fun setupListener() {
+        binding.buttonLogin.setOnClickListener {
+            handleLogin()
+        }
+    }
+
+    private fun handleLogin() {
+        val username = binding.textUser.text.toString()
+        val password = binding.textSenha.text.toString()
+        if (username.isNotEmpty() && password.isNotEmpty()) {
+            viewModel.login(username, password)
+        }else{
+            Toast.makeText(this,
+                "Please insert values for username and password.",
+                Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun setupImage() {
+        binding.icPerson.shapeAppearanceModel = ShapeAppearanceModel.Builder()
+            .setTopLeftCorner(CornerFamily.ROUNDED, 150f)
+            .setTopRightCorner(CornerFamily.ROUNDED, 50f)
+            .setBottomRightCorner(CornerFamily.ROUNDED, 150f)
+            .setBottomLeftCorner(CornerFamily.ROUNDED, 50f)
+            .build()
+    }
+}
