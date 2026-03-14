@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.jpandolpho.semeq.databinding.ActivityMainBinding
+import br.jpandolpho.semeq.ui.treeview.TreeViewActivity
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 

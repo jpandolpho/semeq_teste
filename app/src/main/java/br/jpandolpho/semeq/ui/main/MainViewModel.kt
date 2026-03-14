@@ -61,10 +61,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                                 access = reader.nextString()
                             }
                         }
+                        reader.endObject()
                         val token = AccessCredentials(access, refresh, username)
                         _accessToken.postValue(token)
                     } catch (e: IOException) {
                         _errorLogin.postValue("Request Error. Try again later.")
+                    } finally {
+                        reader.close()
                     }
                 }
             }
