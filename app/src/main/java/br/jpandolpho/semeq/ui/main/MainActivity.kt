@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewModel.accessToken.observe(this, Observer {
+            binding.textUser.setText("")
+            binding.textSenha.setText("")
             val mIntent = Intent(this, TreeViewActivity::class.java)
             val bundle = Bundle()
             bundle.putSerializable("credentials",it)
