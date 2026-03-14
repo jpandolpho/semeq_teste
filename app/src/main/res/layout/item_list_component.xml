@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ic_list_item"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginVertical="4dp"
+        android:src="@drawable/ic_folder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_component_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:text="Placeholder"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@id/ic_list_item"
+        app:layout_constraintStart_toEndOf="@id/ic_list_item"
+        app:layout_constraintTop_toTopOf="@id/ic_list_item" />
+
+    <ImageView
+        android:id="@+id/ic_edit_name"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_edit"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/ic_list_item"
+        app:layout_constraintStart_toEndOf="@id/text_component_name"
+        app:layout_constraintTop_toTopOf="@id/ic_list_item" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
