@@ -137,7 +137,8 @@ class TreeViewViewModel(application: Application) : AndroidViewModel(application
         _currentTree.value = aux
     }
 
-    fun editName(position: Int) {
-
+    fun editName(position: Int, editedName: String) {
+        _currentTree.value!![position].name = editedName
+        _currentTree.value = _currentTree.value!!
     }
 }

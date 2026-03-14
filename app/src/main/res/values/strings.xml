@@ -4,4 +4,7 @@
     <string name="hint_user">User</string>
     <string name="hint_password">Password</string>
     <string name="text_login">LOGIN</string>
+    <string name="equipment_name">Equipment name</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 </resources>

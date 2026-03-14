@@ -36,7 +36,7 @@ class ComponentListAdapter(
         if (component.level == 2) {
             holder.binding.icEditName.visibility = View.VISIBLE
             holder.binding.icEditName.setOnClickListener {
-                clickListener.editName(position)
+                clickListener.editName(position, component.name)
             }
         } else {
             holder.binding.icEditName.visibility = View.GONE
