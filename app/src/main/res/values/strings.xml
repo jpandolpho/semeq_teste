@@ -7,4 +7,5 @@
     <string name="equipment_name">Equipment name</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="placeholder">Placeholder</string>
 </resources>

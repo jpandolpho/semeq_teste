@@ -31,9 +31,11 @@ class MainActivity : AppCompatActivity() {
     private fun setupObservers() {
         viewModel.errorLogin.observe(this, Observer {
             val message = it
-            Toast.makeText(this,
+            Toast.makeText(
+                this,
                 message,
-                Toast.LENGTH_LONG).show()
+                Toast.LENGTH_LONG
+            ).show()
         })
 
         viewModel.accessToken.observe(this, Observer {

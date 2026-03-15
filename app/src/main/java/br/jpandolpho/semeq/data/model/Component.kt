@@ -7,7 +7,4 @@ class Component(
     var parent: Int?,
     var expanded: Boolean = false
 ) {
-    override fun toString(): String {
-        return "{id:$id; name:$name; level:$level; parent:$parent; expanded:$expanded}"
-    }
 }

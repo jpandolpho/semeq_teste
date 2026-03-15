@@ -1,6 +1,5 @@
 package br.jpandolpho.semeq.ui.treeview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +30,7 @@ class ComponentListAdapter(
         holder.binding.textComponentName.setText(component.name)
         holder.binding.listItem.setPadding(component.level * 50, 0, 0, 0)
         holder.binding.listItem.setOnClickListener {
-            clickListener.toggleItem(position,!component.expanded)
+            clickListener.toggleItem(position, !component.expanded)
         }
         if (component.level == 2) {
             holder.binding.icEditName.visibility = View.VISIBLE

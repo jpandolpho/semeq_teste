@@ -47,6 +47,7 @@ class TreeViewActivity : AppCompatActivity(), ComponenetClickListener {
 
     private fun setupObservers() {
         viewModel.credentials.observe(this, Observer {
+            binding.textUsername.setText(it.username)
             viewModel.fetchTree(it.access)
         })
 
@@ -71,7 +72,6 @@ class TreeViewActivity : AppCompatActivity(), ComponenetClickListener {
     private fun verifyBundle() {
         if (intent.extras != null) {
             val credentials = intent.getSerializableExtra("credentials") as AccessCredentials
-            binding.textUsername.setText(credentials.username)
             viewModel.storeCredentials(credentials)
         }
     }
