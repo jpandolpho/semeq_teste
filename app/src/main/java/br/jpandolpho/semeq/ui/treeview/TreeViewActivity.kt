@@ -1,9 +1,9 @@
 package br.jpandolpho.semeq.ui.treeview
 
-import android.content.DialogInterface
 import android.os.Bundle
+import android.view.Gravity
+import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,13 +27,20 @@ class TreeViewActivity : AppCompatActivity(), ComponenetClickListener {
 
         viewModel = ViewModelProvider(this).get(TreeViewViewModel::class.java)
 
+        setupListener()
         setupRecyclerView()
         setupObservers()
         verifyBundle()
     }
 
+    private fun setupListener() {
+        binding.icBackArrow.setOnClickListener {
+            finish()
+        }
+    }
+
     private fun setupRecyclerView() {
-        adapter = ComponentListAdapter(mutableListOf(),this)
+        adapter = ComponentListAdapter(mutableListOf(), this)
         binding.listComponents.adapter = adapter
         binding.listComponents.layoutManager = LinearLayoutManager(this)
     }
@@ -70,29 +77,34 @@ class TreeViewActivity : AppCompatActivity(), ComponenetClickListener {
     }
 
     override fun toggleItem(position: Int, expand: Boolean) {
-        if(expand) {
+        if (expand) {
             viewModel.addChildren(position)
-        }else{
+        } else {
             viewModel.removeChildren(position)
         }
     }
 
-    override fun editName(position: Int, name:String) {
-        val dialogView =layoutInflater.inflate(R.layout.dialog_edit_name,null)
+    override fun editName(position: Int, name: String) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_edit_name, null)
         val bindingDialog = DialogEditNameBinding.bind(dialogView)
         bindingDialog.textEditEquipment.setText(name)
 
         val builder = MaterialAlertDialogBuilder(this)
             .setView(dialogView)
             .setTitle("Edit equipment name")
-            .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialogInterface, i ->
-                val editedName = bindingDialog.textEditEquipment.text.toString()
-                viewModel.editName(position,editedName)
-                dialogInterface.dismiss()
-            })
-            .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialogInterface, i ->
-                dialogInterface.dismiss()
-            })
-            .create().show()
+            .create()
+
+        bindingDialog.buttonConfirm.setOnClickListener {
+            val editedName = bindingDialog.textEditEquipment.text.toString()
+            viewModel.editName(position, editedName)
+            builder.dismiss()
+        }
+        bindingDialog.buttonCancel.setOnClickListener {
+            dialogView.visibility = View.GONE
+            builder.dismiss()
+        }
+
+        builder.window!!.setGravity(Gravity.BOTTOM)
+        builder.show()
     }
 }

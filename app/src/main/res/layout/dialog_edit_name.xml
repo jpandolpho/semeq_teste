@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/ic_edit_name_dialog"
@@ -10,9 +10,9 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="@id/textlayout_edit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textlayout_edit"
-        app:layout_constraintBottom_toBottomOf="@id/textlayout_edit"/>
+        app:layout_constraintTop_toTopOf="@id/textlayout_edit" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textlayout_edit"
@@ -20,10 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="30dp"
         android:layout_marginStart="8dp"
-        android:hint="@string/equipment_name"
         android:layout_marginEnd="20dp"
-        app:layout_constraintStart_toEndOf="@id/ic_edit_name_dialog"
+        android:hint="@string/equipment_name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ic_edit_name_dialog"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -33,36 +33,37 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/button_confirm"-->
-<!--        style="@style/Widget.MaterialComponents.Button"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginHorizontal="24dp"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:backgroundTint="@color/pink"-->
-<!--        android:paddingVertical="15dp"-->
-<!--        android:text="@string/confirm"-->
-<!--        app:cornerRadius="50dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/textlayout_edit"-->
-<!--        app:layout_constraintStart_toStartOf="@id/textlayout_edit"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/textlayout_edit"/>-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_confirm"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/pink"
+        android:paddingVertical="15dp"
+        android:text="@string/confirm"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="@id/textlayout_edit"
+        app:layout_constraintStart_toStartOf="@id/textlayout_edit"
+        app:layout_constraintTop_toBottomOf="@id/textlayout_edit" />
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/button_cancel"-->
-<!--        style="@style/Widget.MaterialComponents.Button"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginHorizontal="24dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:backgroundTint="@color/offwhite"-->
-<!--        android:textColor="@color/pink"-->
-<!--        android:paddingVertical="15dp"-->
-<!--        android:text="@string/cancel"-->
-<!--        app:cornerRadius="50dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/button_confirm"-->
-<!--        app:layout_constraintStart_toStartOf="@id/textlayout_edit"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/textlayout_edit"/>-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_cancel"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/offwhite"
+        android:paddingVertical="15dp"
+        android:text="@string/cancel"
+        android:textColor="@color/pink"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="@id/textlayout_edit"
+        app:layout_constraintStart_toStartOf="@id/textlayout_edit"
+        app:layout_constraintTop_toBottomOf="@id/button_confirm" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
