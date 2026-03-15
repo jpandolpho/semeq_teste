@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        //Observer para relatar algum problema no Login ou algum problema na requisição de autenticação.
         viewModel.errorLogin.observe(this, Observer {
             val message = it
             Toast.makeText(
@@ -38,12 +39,15 @@ class MainActivity : AppCompatActivity() {
             ).show()
         })
 
+        /*Caso o login seja feito com sucesso, lançamos a próxima activity mandando junto num Bundle
+        as credenciais de acesso através de um objeto AccessCredentials.
+         */
         viewModel.accessToken.observe(this, Observer {
             binding.textUser.setText("")
             binding.textSenha.setText("")
             val mIntent = Intent(this, TreeViewActivity::class.java)
             val bundle = Bundle()
-            bundle.putSerializable("credentials",it)
+            bundle.putSerializable("credentials", it)
             mIntent.putExtras(bundle)
             startActivity(mIntent)
         })
@@ -58,15 +62,10 @@ class MainActivity : AppCompatActivity() {
     private fun handleLogin() {
         val username = binding.textUser.text.toString()
         val password = binding.textSenha.text.toString()
-        if (username.isNotEmpty() && password.isNotEmpty()) {
-            viewModel.login(username, password)
-        }else{
-            Toast.makeText(this,
-                "Please insert values for username and password.",
-                Toast.LENGTH_LONG).show()
-        }
+        viewModel.login(username, password)
     }
 
+    //Forma encontrada para estilizar a imagem, para se aproximar da apresentada no exemplo do pdf.
     private fun setupImage() {
         binding.icPerson.shapeAppearanceModel = ShapeAppearanceModel.Builder()
             .setTopLeftCorner(CornerFamily.ROUNDED, 150f)
