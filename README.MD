@@ -6,7 +6,7 @@ O projeto foi feito inteiramente em Kotlin utilizando o Android Studio. Foi util
 ## Tecnologias utilizadas
 - Android Studio 2024.2.2 (Ladybug Feature Drop)
 - Biblioteca OkHttp para requisições para a API
-- Kotlin Coroutines (viewModelScope) para execução da requisição fora a thread principal
+- Kotlin Coroutines (viewModelScope) para execução da requisição fora da thread principal
 
 ## APK
 É possível encontrar um apk para este projeto no diretório apk, encontrado na raíz do projeto no github.
